@@ -22,6 +22,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Debug - List files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files in root:"
+          ls -la
+          echo "Checking for app directory:"
+          ls -la app/ || echo "app directory not found"
+          echo "Checking git status:"
+          git status || true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
