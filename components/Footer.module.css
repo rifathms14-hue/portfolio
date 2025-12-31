@@ -1,0 +1,168 @@
+.footer {
+  background-color: #000000;
+  width: 100%;
+  color: #ffffff;
+  padding: 80px 0 32px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Top Section */
+.topSection {
+  border-bottom: 1px solid rgba(130, 130, 130, 0.3);
+  padding-bottom: 64px;
+  margin-bottom: 32px;
+}
+
+.heading {
+  margin-bottom: 48px;
+}
+
+.headingMain {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.headingText {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: rgba(130, 130, 130, 0.8);
+}
+
+.headingWork {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.contactInfo {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactLabel {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 100%;
+  color: rgba(130, 130, 130, 0.8);
+}
+
+.contactValue {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.contactValue:hover {
+  opacity: 0.7;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s ease;
+}
+
+.socialLink:hover {
+  opacity: 0.7;
+}
+
+.socialLink img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Bottom Section */
+.bottomSection {
+  padding-top: 24px;
+}
+
+.bottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.location {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: rgba(184, 184, 184, 0.8);
+}
+
+.locationHighlight {
+  color: #ffffff;
+}
+
+.copyright {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: rgba(184, 184, 184, 0.8);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .footer {
+    padding: 64px 0 24px;
+  }
+
+  .topSection {
+    padding-bottom: 48px;
+    margin-bottom: 24px;
+  }
+
+  .heading {
+    margin-bottom: 40px;
+  }
+
+  .contactInfo {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

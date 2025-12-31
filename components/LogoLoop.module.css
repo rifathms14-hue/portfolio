@@ -1,0 +1,67 @@
+.logoLoopContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+}
+
+.logoLoop {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.logoItem.scaleOnHover:hover {
+  transform: scale(1.1);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logoImage {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  display: block;
+}
+
+.logoItem:hover .logoImage {
+  opacity: 1;
+}
+
+.logoNode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.logoItem:hover .logoNode {
+  opacity: 1;
+}
+

@@ -1,0 +1,102 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
+import Link from 'next/link'
+import styles from './Projects.module.css'
+import CaseStudyCard from './CaseStudyCard'
+import CurvedLoop from './CurvedLoop'
+
+interface Project {
+  id: number
+  title: string
+  imageUrl?: string
+  iconUrl?: string
+  hoverText?: string
+  tags?: string[]
+  href: string
+}
+
+const projects: Project[] = [
+  {
+    id: 1,
+    title: 'Turning notifications into a decision-critical attention system',
+    imageUrl: '/project_1_banner.png',
+    iconUrl: '/voiro_icon.png',
+    hoverText: 'Designed a decision-critical notification system for a high-stake Ad-Tech platform, turning notifications into a reliable attention layer through user control, clear context, and accountability.',
+    tags: ['AdTech', 'High-Stakes Systems'],
+    href: '/voiro',
+  },
+  {
+    id: 2,
+    title: 'Designing trust in debt recovery for a regulated financial ecosystem',
+    imageUrl: '/munjz_banner.png',
+    iconUrl: '/munjz.png',
+    hoverText: 'Transformed fragmented, institution-locked collection systems into a governed, multi-tenant decision infrastructure. Designed to scale across agencies while operating under strict regulatory constraints.',
+    tags: ['FinTech', 'Multi-Tenant SaaS', 'Compliance'],
+    href: '/munjz',
+  },
+  {
+    id: 3,
+    title: 'Modernizing global supply chain demand planning without breaking user behaviour',
+    imageUrl: '/ibp_banner.png',
+    iconUrl: '/locked_project.png',
+    hoverText: 'Architected a governed decision cockpit for global demand planning, and preserving existing user behavior while eliminating fragmentation, restoring shared confidence, and accelerating cross-org supply chain decisions.',
+    tags: ['Supply Chain', 'Enterprise SaaS', 'User Behavior'],
+    href: '/ibp',
+  },
+  {
+    id: 4,
+    title: 'Establishing Design System Governance across a distributed enterprise',
+    imageUrl: '/design_system_banner.png',
+    iconUrl: '/locked_project.png',
+    hoverText: 'Led the end-to-end transformation of a fragmented design ecosystem into a governed, scalable design system across a distributed organization of 50+ designers.',
+    tags: ['Design System', 'DesignOps', 'Governance'],
+    href: '/design-system',
+  },
+]
+
+export default function Projects() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  return (
+    <section id="projects" className={styles.projects} ref={ref}>
+      <div className="container">
+        <div className={styles.sectionTitle}>
+          <CurvedLoop 
+            marqueeText="Highlighted ✦ Projects ✦ Featured ✦ Works ✦"
+            speed={2}
+            curveAmount={80}
+            direction="left"
+            interactive={true}
+          />
+        </div>
+        
+        <div className={styles.projectsGrid}>
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              className={styles.projectCard}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Link href={project.href} style={{ textDecoration: 'none', display: 'block' }}>
+                <CaseStudyCard
+                  title={project.title}
+                  imageUrl={project.imageUrl}
+                  imageAlt={project.title}
+                  iconUrl={project.iconUrl}
+                  hoverText={project.hoverText}
+                  tags={project.tags}
+                />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,59 @@
+.about {
+  padding: var(--spacing-xl) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollTextSection {
+  width: 100%;
+  max-width: 691px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.scrollRevealContainer {
+  margin: 0;
+}
+
+.scrollText {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  line-height: 28px !important;
+  color: var(--color-text-primary) !important;
+  text-align: left !important;
+  margin: 0 auto !important;
+  white-space: pre-line;
+}
+
+.scrollText .word.bold {
+  font-weight: 600;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .scrollText {
+    font-size: 18px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .scrollTextSection {
+    padding: 0 16px;
+  }
+
+  .scrollText {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+}
+
+
+
+

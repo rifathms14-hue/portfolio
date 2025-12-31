@@ -1,0 +1,332 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: var(--spacing-xl);
+  overflow: hidden;
+}
+
+/* Aurora background is now handled by Aurora component */
+
+.content {
+  text-align: center;
+  max-width: 691px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+}
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.profileWrapper {
+  position: relative;
+  width: 142.327px;
+  height: 142.327px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.profileRotate {
+  transform: rotate(348deg);
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  border: none;
+  outline: none;
+  box-shadow: 
+    0 1.433px 1.433px 0 rgba(0, 0, 0, 0.07), 
+    0 2.865px 2.865px 0 rgba(0, 0, 0, 0.07), 
+    0 5.731px 5.731px 0 rgba(0, 0, 0, 0.07), 
+    0 11.461px 11.461px 0 rgba(0, 0, 0, 0.07), 
+    0 22.923px 22.923px 0 rgba(0, 0, 0, 0.07);
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: 'Unbounded', sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 48px;
+  line-height: normal;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variation-settings: normal;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 691px;
+  margin: 0;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.companyInfo strong {
+  color: var(--color-text-primary);
+}
+
+.companyLogo {
+  height: 20px;
+  width: 104px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.brandsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 96px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: 80px;
+  padding-right: 80px;
+  box-sizing: border-box;
+}
+
+.brandsTitle {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: normal;
+  color: #555;
+  text-align: center;
+  margin: 0;
+}
+
+.brandsList {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.scrollTextSection {
+  width: 100%;
+  max-width: 691px;
+  margin-top: 96px;
+  text-align: left;
+}
+
+.scrollRevealContainer {
+  margin: 0;
+}
+
+.scrollText {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  line-height: 28px !important;
+  color: var(--color-text-primary) !important;
+  text-align: left !important;
+  margin: 0 !important;
+  white-space: pre-line;
+}
+
+.scrollText .word.bold {
+  font-weight: 600;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 140px;
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .blurBackground {
+    left: 50%;
+    transform: translateX(-50%) rotate(232deg);
+    width: 800px;
+    height: 900px;
+    top: -300px;
+  }
+
+  .title {
+    font-size: 40px;
+    white-space: normal;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .companyInfo {
+    font-size: 16px;
+  }
+
+  .brandsSection {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 160px;
+    min-height: 90vh;
+  }
+
+  .content {
+    gap: 36px;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .topSection {
+    gap: 28px;
+  }
+
+  .titleSection {
+    gap: 8px;
+  }
+
+  .profileWrapper {
+    width: 142.327px;
+    height: 142.327px;
+    margin-bottom: 8px;
+  }
+
+  .profileImg {
+    border-radius: 15px;
+  }
+
+  .title {
+    font-size: 48px;
+    white-space: normal;
+    margin-bottom: 0;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .companyInfo {
+    font-size: 18px;
+    line-height: 28px;
+    flex-direction: row;
+    gap: 0;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .ctaButtons {
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .ctaButtons > * {
+    flex: 1;
+    height: 56px;
+  }
+
+  .brandsSection {
+    margin-top: 96px;
+    gap: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .brandsList {
+    width: 100%;
+  }
+
+  .scrollTextSection {
+    margin-top: 64px;
+  }
+
+  .scrollText {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}

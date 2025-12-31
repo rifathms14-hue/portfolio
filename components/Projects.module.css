@@ -1,0 +1,281 @@
+.projects {
+  padding: 56px 0 48px 0;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  margin-bottom: 48px;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+  width: 100vw;
+  overflow: visible;
+  height: auto;
+  min-height: auto;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.projectCard {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base) ease;
+}
+
+.projectCard a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Card Visualization Section */
+.cardVisualization {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 533px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+}
+
+.cardMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.cardMetric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.cardMetricLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cardMetricRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.cardMetricValue {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.cardMetricChange {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.cardMetricChange.positive {
+  color: #00C853;
+}
+
+.cardMetricChange.negative {
+  color: #FF5C35;
+}
+
+.cardChart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0;
+  padding: 24px 0;
+}
+
+.cardPieChart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardChartSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.cardChartCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cardChartValue {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.cardLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cardLogoText {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cardLogoV {
+  font-size: 28px;
+  font-weight: 600;
+  margin-right: 4px;
+  transform: rotate(-15deg);
+  display: inline-block;
+  color: #ffffff;
+}
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .cardVisualization {
+    padding: 32px;
+    gap: 28px;
+    min-height: 480px;
+  }
+
+  .cardMetrics {
+    gap: 20px;
+  }
+
+  .cardMetricValue {
+    font-size: 28px;
+  }
+
+  .cardMetricLabel {
+    font-size: 10px;
+  }
+
+  .cardPieChart {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cardChartValue {
+    font-size: 18px;
+  }
+
+  .cardLogoText {
+    font-size: 22px;
+  }
+
+  .cardLogoV {
+    font-size: 26px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .projects {
+    padding: 56px 0 48px 0;
+    min-height: auto;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cardVisualization {
+    padding: 28px;
+    gap: 24px;
+    min-height: 450px;
+  }
+
+  .cardMetrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .cardMetricValue {
+    font-size: 26px;
+  }
+
+  .cardMetricLabel {
+    font-size: 10px;
+  }
+
+  .cardPieChart {
+    width: 130px;
+    height: 130px;
+  }
+
+  .cardChartValue {
+    font-size: 17px;
+  }
+
+  .cardLogoText {
+    font-size: 20px;
+  }
+
+  .cardLogoV {
+    font-size: 24px;
+  }
+}
