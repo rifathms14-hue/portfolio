@@ -236,8 +236,668 @@
   white-space: nowrap;
 }
 
+.contentSection {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 48px;
+}
+
+.contentBlock {
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0 0 24px 0;
+}
+
+.coverImageWrapper {
+  width: 100vw;
+  margin: 32px calc(-50vw + 50%);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.coverImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.subsectionTitle {
+  font-family: var(--font-body) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #000000 !important;
+  margin: 24px 0 12px 0 !important;
+  letter-spacing: normal !important;
+}
+
+.subsectionTitle:first-child {
+  margin-top: 0 !important;
+}
+
+.textContent {
+  margin-bottom: 32px;
+}
+
+.tldrContainer {
+  background: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.bodyText {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
+
+.bodyText strong {
+  font-weight: 600;
+}
+
+.bulletList {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #000000;
+  margin: 0 0 32px 0;
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.bulletList li {
+  margin-bottom: 12px;
+}
+
+.numberedList {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #000000;
+  margin: 0 0 32px 0;
+  padding-left: 24px;
+  list-style-type: decimal;
+}
+
+.numberedList li {
+  margin-bottom: 12px;
+}
+
+/* Trade-offs Grid (2x2) */
+.tradeOffsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.tradeOffCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.tradeOffCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.tradeOffTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.tradeOffContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Problem Section Layout */
+.problemSectionLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.problemContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.problemImageWrapper {
+  position: sticky;
+  top: 120px;
+  height: fit-content;
+  display: flex;
+  align-items: flex-start;
+}
+
+.problemImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Problem Cards Grid (2x2 matrix) */
+.problemCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 0;
+  align-items: stretch;
+}
+
+.problemCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.problemCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Problem Surface Cards Grid (3x1) */
+.problemSurfaceCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+.problemSurfaceCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.problemSurfaceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.problemSurfaceCardTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Observations Cards Grid (4x1) */
+.observationsCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+.observationCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: all 0.2s ease;
+}
+
+.observationCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Principle Cards Grid (5x1) */
+.principleCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+.principleCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.principleCard .bodyText:empty {
+  display: none;
+}
+
+.principleCard .principleCardNote:empty {
+  display: none;
+}
+
+.principleCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.principleCardTitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+}
+
+.principleCardNote {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  color: #585858;
+  line-height: 1.5;
+  margin: 12px 0 0 0;
+}
+
+/* Solution Images Grid (1x2) */
+.solutionImagesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+/* Taxonomy Cards Grid (3x1) */
+.taxonomyCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+/* First row: 1 card spanning full width (2 columns) */
+.taxonomyCard:nth-child(1) {
+  grid-column: span 2;
+}
+
+/* Second row: 2 cards, each spanning 1 column (filling full width) */
+.taxonomyCard:nth-child(2),
+.taxonomyCard:nth-child(3) {
+  grid-column: span 1;
+}
+
+.taxonomyCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.taxonomyCardTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.taxonomyCard .imagePlaceholder {
+  margin-top: 0;
+  min-height: 200px;
+}
+
+/* Handoff Cards Grid (3 cards in first row, 2 cards in second row filling full width) */
+.handoffCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.handoffCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.handoffCard .imagePlaceholder {
+  margin-top: 0;
+  min-height: 200px;
+}
+
+/* Reframing Blocks Grid (2x1) */
+.reframingBlocksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin: 24px 0 32px 0;
+}
+
+.reframingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reframingBlockTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.reframingBlock .imagePlaceholder {
+  margin-top: 0;
+  min-height: 300px;
+}
+
+/* Final Visuals Grid (2x4) */
+.finalVisualsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.finalVisualsGrid .imageWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.finalVisualsGrid .imagePlaceholder {
+  margin-top: 0;
+  min-height: 300px;
+}
+
+/* Outcome Grid (3x1) */
+.outcomeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+.outcomeCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.outcomeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.outcomeValue {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.outcomeTitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.outcomeDescription {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: #585858;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.reflectionText {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  color: #000000;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  min-height: 400px;
+  background: #F5F5F5;
+  border: 2px dashed #CCCCCC;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.imagePlaceholderGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.imagePlaceholderGrid .imagePlaceholder {
+  margin-top: 0;
+}
+
+.imagePlaceholderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.imageWrapper .problemImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.highlightQuote {
+  margin: 24px auto 0 auto;
+  max-width: 800px;
+  padding: 32px 40px;
+  background: #FAFAFA;
+  border-left: 4px solid #FF5C35;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  color: #000000;
+  line-height: 1.6;
+  text-align: left;
+  position: relative;
+}
+
+.placeholderLabel {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #888888;
+  text-align: center;
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
+  .contentSection {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .coverImageWrapper {
+    margin: 32px -20px;
+    width: calc(100% + 40px);
+  }
+
+  .tradeOffsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .problemSectionLayout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .problemImageWrapper {
+    position: relative;
+    top: 0;
+  }
+
+  .problemCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .problemSurfaceCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .observationsCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .principleCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .reframingBlocksGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .taxonomyCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .taxonomyCard:nth-child(1),
+  .taxonomyCard:nth-child(2),
+  .taxonomyCard:nth-child(3),
+  .taxonomyCard:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .finalVisualsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .handoffCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .handoffCard:nth-child(1),
+  .handoffCard:nth-child(2),
+  .handoffCard:nth-child(3),
+  .handoffCard:nth-child(4),
+  .handoffCard:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .imagePlaceholderGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .outcomeGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .outcomeValue {
+    font-size: 20px;
+  }
+
+  .outcomeTitle {
+    font-size: 16px;
+  }
+
+  .outcomeDescription {
+    font-size: 14px;
+  }
+
   .bannerSection {
     height: 250px;
     width: calc(100% - 40px);
@@ -282,6 +942,111 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  .contentSection {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .coverImageWrapper {
+    margin: 32px -20px;
+    width: calc(100% + 40px);
+  }
+
+  .bodyText {
+    font-size: 16px;
+  }
+
+  .tradeOffsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .problemSectionLayout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .problemImageWrapper {
+    position: relative;
+    top: 0;
+  }
+
+  .problemCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .problemSurfaceCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .reframingBlocksGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .taxonomyCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .finalVisualsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .handoffCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .handoffCard:nth-child(1),
+  .handoffCard:nth-child(2),
+  .handoffCard:nth-child(3),
+  .handoffCard:nth-child(4),
+  .handoffCard:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .principleCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .imagePlaceholderGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .outcomeGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .outcomeValue {
+    font-size: 20px;
+  }
+
+  .outcomeTitle {
+    font-size: 16px;
+  }
+
+  .outcomeDescription {
+    font-size: 14px;
+  }
+
+  .tradeOffCard,
+  .problemCard,
+  .observationCard,
+  .principleCard,
+  .outcomeCard {
+    padding: 20px;
+  }
   .metadataStrip {
     display: flex;
     flex-direction: column;

@@ -126,6 +126,13 @@
   margin-bottom: 32px;
 }
 
+.tldrContainer {
+  background: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  border-radius: 12px;
+  padding: 20px;
+}
+
 .sectionImageWrapper {
   width: 100%;
   margin: 0 0 32px 0;
@@ -241,12 +248,13 @@
 }
 
 .subsectionTitle {
-  font-family: var(--font-body);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #000000;
-  margin: 0 0 12px 0;
+  font-family: var(--font-body) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #000000 !important;
+  margin: 0 0 12px 0 !important;
+  letter-spacing: normal !important;
 }
 
 .decisionsList {
@@ -270,12 +278,22 @@
 }
 
 .decisionSubsectionTitle {
+  font-family: var(--font-body) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #000000 !important;
+  margin: 0 0 8px 0 !important;
+  letter-spacing: normal !important;
+}
+
+.decisionSubsectionDescription {
   font-family: var(--font-body);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #000000;
-  margin: 0 0 24px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #585858;
+  margin: 0 0 16px 0;
 }
 
 .decisionSubsection .imagePlaceholder {
@@ -288,7 +306,7 @@
   font-weight: 400;
   color: #888888;
   margin: 8px 0 0 0;
-  text-align: left;
+  text-align: center;
   line-height: 1.4;
 }
 
@@ -497,7 +515,7 @@
 
 .tradeOffsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin: 24px 0 32px 0;
 }
@@ -644,6 +662,14 @@
   align-items: center;
 }
 
+.iaCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+  width: 100%;
+}
+
 .constraintsGroup {
   display: flex;
   gap: 16px;
@@ -743,9 +769,10 @@
 
 .decisionImage {
   width: 100%;
-  height: 300px;
+  height: auto;
   border-radius: 12px;
-  overflow: hidden;
+  object-fit: cover;
+  display: block;
 }
 
 .decisionImage .imagePlaceholder {
@@ -1070,7 +1097,7 @@
   }
 
   .tradeOffsGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
@@ -1083,7 +1110,7 @@
   }
 
   .tradeOffsGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
@@ -1204,6 +1231,11 @@
     gap: 24px 32px;
   }
 
+  .iaCardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
   .constraintsContainer {
     gap: 20px;
   }
@@ -1300,6 +1332,11 @@
 
   .reflectionCardText {
     font-size: 14px;
+  }
+
+  .iaCardsContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .constraintsGroup {

@@ -67,7 +67,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   const openTlRef = useRef<gsap.core.Timeline | null>(null)
   const closeTweenRef = useRef<gsap.core.Tween | null>(null)
-  const spinTweenRef = useRef<gsap.core.Tween | null>(null)
+  const spinTweenRef = useRef<gsap.core.Timeline | null>(null)
   const textCycleAnimRef = useRef<gsap.core.Tween | null>(null)
   const colorTweenRef = useRef<gsap.core.Tween | null>(null)
   const toggleBtnRef = useRef<HTMLButtonElement>(null)
@@ -175,20 +175,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     if (buttonLinks.length) {
       const buttonsStart = panelInsertTime + panelDuration * 0.4
-      tl.to(
+        tl.to(
         buttonLinks,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.55,
-          ease: 'power3.out',
-          stagger: { each: 0.08, from: 'start' },
-          onComplete: () => {
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.55,
+            ease: 'power3.out',
+            stagger: { each: 0.08, from: 'start' },
+            onComplete: () => {
             gsap.set(buttonLinks, { clearProps: 'opacity' })
-          }
-        },
+            }
+          },
         buttonsStart + 0.04
-      )
+        )
     }
 
     openTlRef.current = tl
@@ -564,7 +564,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 />
               </a>
               <a
-                href="/resume.pdf"
+                href="https://www.dropbox.com/scl/fi/qvpsgjqwfa54j2kzrbjy5/Mohamed-Rifath-CV-2026.pdf?rlkey=qj7dqygwmwue1jbgn8m1pqs8r&e=1&st=6790yq28&dl=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="sm-resume-button"

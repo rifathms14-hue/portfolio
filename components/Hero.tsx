@@ -138,19 +138,6 @@ export default function Hero() {
             <span>Currently designing enterprise systems at <strong>Deloitte Digital</strong>.</span>
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            variants={ctaVariants}
-            className={styles.ctaButtons}
-          >
-            <Button variant="Primary" as="a" href="#projects">
-              View my works
-            </Button>
-            <Button variant="Tertiary" as="a" href="#contact">
-              Let&apos;s Connect
-            </Button>
-          </motion.div>
-
           {/* Brands Section */}
           <motion.div
             variants={itemVariants}

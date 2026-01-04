@@ -79,7 +79,8 @@
 }
 
 .contactValue:hover {
-  opacity: 0.7;
+  color: #FF6B35;
+  opacity: 1;
 }
 
 .socialLinks {

@@ -159,10 +159,16 @@
 
 .toolsContainer {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 303px;
+}
+
+.toolsRow {
+  display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  width: 303px;
 }
 
 .toolItem {
@@ -341,6 +347,465 @@
   .metadataItem {
     flex: 1;
     min-width: calc(50% - 8px);
+  }
+}
+
+/* Content Section Styles */
+.contentSection {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 48px;
+}
+
+.contentBlock {
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0 0 24px 0;
+}
+
+.coverImageWrapper {
+  width: 100vw;
+  margin: 32px calc(-50vw + 50%);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.coverImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.subsectionTitle {
+  font-family: var(--font-body) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #000000 !important;
+  margin: 24px 0 12px 0 !important;
+  letter-spacing: normal !important;
+}
+
+.subsectionTitle:first-child {
+  margin-top: 0 !important;
+}
+
+.textContent {
+  margin-bottom: 32px;
+}
+
+.tldrContainer {
+  background: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.bodyText {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
+
+/* Image Placeholder */
+.imagePlaceholder {
+  width: 100%;
+  min-height: 400px;
+  background: #F5F5F5;
+  border: 2px dashed #CCCCCC;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0 32px 0;
+}
+
+.placeholderLabel {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #999999;
+  text-align: center;
+}
+
+/* Ask vs Reality Grid (2x1) */
+.askRealityGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.askRealityCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.askRealityCard .imagePlaceholder {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Process Flow Grid (2 cards) */
+.processFlowGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.processFlowCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.2s ease;
+}
+
+.processFlowCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.processFlowCard .imageWrapper {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.processFlowCard .imageWrapper {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.processFlowCard .imagePlaceholder {
+  margin: 0;
+  min-height: 200px;
+}
+
+.imageWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Problem Cards Grid (2x2) */
+.problemCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+.problemCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.problemCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.problemCardTitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.highlightQuote {
+  margin: 32px auto 0 auto;
+  max-width: 800px;
+  padding: 32px 40px;
+  background: #FAFAFA;
+  border-left: 4px solid #FF5C35;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  color: #000000;
+  line-height: 1.6;
+  text-align: left;
+  position: relative;
+}
+
+.highlightQuote::before {
+  content: '"';
+  font-size: 48px;
+  line-height: 1;
+  color: #FF5C35;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: Georgia, serif;
+  opacity: 0.3;
+}
+
+.highlightQuote::after {
+  content: '"';
+  font-size: 48px;
+  line-height: 1;
+  color: #FF5C35;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-family: Georgia, serif;
+  opacity: 0.3;
+}
+
+/* Hard Truths Grid (3x1) */
+.hardTruthsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.hardTruthCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.hardTruthCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hardTruthTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+}
+
+.hardTruthText {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Constraints Grid */
+.constraintsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.constraintCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.constraintCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.constraintTitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Design Moves Grid (2x2) */
+.designMovesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 24px;
+  row-gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.designMoveCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.designMoveCard .imageWrapper {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.designMoveCard .imagePlaceholder {
+  margin: 0;
+  min-height: 200px;
+}
+
+/* Before vs After Grid */
+.beforeAfterGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.beforeAfterCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.beforeAfterCard .imagePlaceholder {
+  margin: 0;
+  min-height: 300px;
+}
+
+/* Trade-offs Grid (3x1) */
+.tradeOffsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 24px 0 32px 0;
+}
+
+.tradeOffCard {
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #EAEAEA;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+  cursor: default;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tradeOffCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.tradeOffTitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.tradeOffContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardTitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .contentSection {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .problemCardsGrid,
+  .beforeAfterGrid,
+  .tradeOffsGrid,
+  .designMovesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .askRealityGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .hardTruthsGrid,
+  .constraintsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentSection {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .askRealityGrid,
+  .problemCardsGrid,
+  .beforeAfterGrid,
+  .tradeOffsGrid,
+  .hardTruthsGrid,
+  .constraintsGrid,
+  .processFlowGrid,
+  .designMovesGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .imagePlaceholder {
+    min-height: 300px;
   }
 }
 

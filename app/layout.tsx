@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GridPattern } from '@/components/ui/grid-pattern'
+import GridPatternWrapper from '@/components/ui/grid-pattern-wrapper'
 import './globals.css'
 import './fonts.css'
 
@@ -47,11 +47,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // #region agent log
-  if (typeof window !== 'undefined') {
-    fetch('http://127.0.0.1:7243/ingest/4b5760ae-56f0-477b-8a54-cac03beae7aa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'layout.tsx:46',message:'RootLayout render',data:{isClient:typeof window !== 'undefined'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
-  }
-  // #endregion
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -65,29 +60,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
       </head>
       <body style={{ position: 'relative' }}>
-        <GridPattern
-          width={40}
-          height={40}
-          x={-1}
-          y={-1}
-          squares={[
-            [4, 4],
-            [5, 1],
-            [8, 2],
-            [5, 3],
-            [5, 5],
-          ]}
-          style={{
-            maskImage: 'radial-gradient(600px circle at center, white, transparent)',
-            WebkitMaskImage: 'radial-gradient(600px circle at center, white, transparent)',
-            left: 0,
-            right: 0,
-            top: '-30%',
-            height: '200%',
-            transform: 'skewY(12deg)',
-            opacity: 1,
-          }}
-        />
+        <GridPatternWrapper />
         {children}
       </body>
     </html>

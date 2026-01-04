@@ -7,6 +7,9 @@ export default function ConditionalBlur() {
   const [showBlur, setShowBlur] = useState(true)
 
   useEffect(() => {
+    // Ensure we're on the client side
+    if (typeof window === 'undefined') return
+    
     // Find the Tools section element
     const toolsSection = document.getElementById('tools')
     if (!toolsSection) return

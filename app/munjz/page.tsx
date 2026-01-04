@@ -1,14 +1,56 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
+import OtherWorks from '@/components/OtherWorks'
 import Image from 'next/image'
 import styles from './page.module.css'
 
 export default function MunjzCaseStudy() {
   const [showFigmaEmbed, setShowFigmaEmbed] = useState(false)
+
+  // #region agent log
+  useEffect(() => {
+    const cssCheck = {
+      stylesExists: !!styles,
+      stylesType: typeof styles,
+      hasSubsectionTitle: !!styles?.subsectionTitle,
+      hasSectionTitle: !!styles?.sectionTitle,
+      hasBodyText: !!styles?.bodyText,
+      subsectionTitleValue: styles?.subsectionTitle,
+      sectionTitleValue: styles?.sectionTitle,
+      bodyTextValue: styles?.bodyText,
+      allKeys: styles ? Object.keys(styles) : [],
+      stylesObject: styles
+    };
+    fetch('http://127.0.0.1:7243/ingest/4b5760ae-56f0-477b-8a54-cac03beae7aa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'munjz/page.tsx:useEffect',message:'CSS module check after render',data:cssCheck,timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+    
+    // Check actual DOM elements for class names
+    const subsectionElements = document.querySelectorAll('[class*="subsectionTitle"]');
+    const sectionElements = document.querySelectorAll('[class*="sectionTitle"]');
+    const bodyElements = document.querySelectorAll('[class*="bodyText"]');
+    
+    fetch('http://127.0.0.1:7243/ingest/4b5760ae-56f0-477b-8a54-cac03beae7aa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'munjz/page.tsx:useEffect',message:'DOM class name check',data:{subsectionCount:subsectionElements.length,sectionCount:sectionElements.length,bodyCount:bodyElements.length,subsectionClasses:Array.from(subsectionElements).map(el=>el.className),sectionClasses:Array.from(sectionElements).map(el=>el.className)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+    
+    // Check for hydration warnings
+    const originalWarn = console.warn;
+    console.warn = function(...args) {
+      const msg = args.join(' ');
+      if (msg.includes('hydration') || msg.includes('className') || msg.includes('class')) {
+        fetch('http://127.0.0.1:7243/ingest/4b5760ae-56f0-477b-8a54-cac03beae7aa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'munjz/page.tsx:console',message:'Console warning captured',data:{args:args.map(a=>String(a))},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+      }
+      originalWarn.apply(console, args);
+    };
+    
+    const originalError = console.error;
+    console.error = function(...args) {
+      fetch('http://127.0.0.1:7243/ingest/4b5760ae-56f0-477b-8a54-cac03beae7aa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'munjz/page.tsx:console',message:'Console error captured',data:{args:args.map(a=>String(a))},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+      originalError.apply(console, args);
+    };
+  }, [styles]);
+  // #endregion
 
   return (
     <main>
@@ -79,25 +121,27 @@ export default function MunjzCaseStudy() {
         <div className={styles.contentSection}>
           {/* TL;DR Section */}
           <section className={styles.contentBlock}>
-            <h2 className={styles.sectionTitle}>TL;DR</h2>
-            <div className={styles.textContent}>
-              <ol className={styles.numberedList}>
-                <li className={styles.bodyText}>
-                  0→1 multi-tenant collections platform for Saudi financial institutions, governed by SAMA/CMA.
-                </li>
-                <li className={styles.bodyText}>
-                  Lead Product Designer owning UX strategy, information architecture, and compliance-by-design.
-                </li>
-                <li className={styles.bodyText}>
-                  Designed guardrails (contact caps, audit trails, consent flows) and role-based workspaces for admins, agencies, and agents.
-                </li>
-                <li className={styles.bodyText}>
-                  Built native Arabic/English (RTL/LTR) support from day one to scale across institutions.
-                </li>
-                <li className={styles.bodyText}>
-                  <strong>Outcome:</strong> Launched MVP under a 12‑week timeline, reduced non-compliant behavior risk, and created a reusable governance model for future fintech products.
-                </li>
-              </ol>
+            <div className={styles.tldrContainer}>
+              <h2 className={styles.sectionTitle}>TL;DR</h2>
+              <div className={styles.textContent}>
+                <ol className={styles.numberedList}>
+                  <li className={styles.bodyText}>
+                    0→1 multi-tenant collections platform for Saudi financial institutions, governed by SAMA/CMA.
+                  </li>
+                  <li className={styles.bodyText}>
+                    Lead Product Designer owning UX strategy, information architecture, and compliance-by-design.
+                  </li>
+                  <li className={styles.bodyText}>
+                    Designed guardrails (contact caps, audit trails, consent flows) and role-based workspaces for admins, agencies, and agents.
+                  </li>
+                  <li className={styles.bodyText}>
+                    Built native Arabic/English (RTL/LTR) support from day one to scale across institutions.
+                  </li>
+                  <li className={styles.bodyText}>
+                    <strong>Outcome:</strong> Launched MVP under a 12‑week timeline, reduced non-compliant behavior risk, and created a reusable governance model for future fintech products.
+                  </li>
+                </ol>
+              </div>
             </div>
           </section>
 
@@ -274,6 +318,32 @@ export default function MunjzCaseStudy() {
                 The platform&apos;s information architecture defines access boundaries, compliance guardrails, and permissible actions per role.
               </p>
             </div>
+            <div className={styles.iaCardsContainer}>
+              <div className={styles.constraintCard}>
+                <div className={styles.constraintTitleSection}>
+                  <h3 className={styles.constraintTitle}>Modular role hierarchy</h3>
+                  <p className={styles.constraintDescription}>Super Admin, Agency Admin, Agent, Customer, and future roles (Compliance Officer, CFO, etc.) fit into a consistent permission matrix. New roles can be added by extending the model, not reworking it.</p>
+                </div>
+              </div>
+              <div className={styles.constraintCard}>
+                <div className={styles.constraintTitleSection}>
+                  <h3 className={styles.constraintTitle}>Tenant-agnostic flows</h3>
+                  <p className={styles.constraintDescription}>Workflows for case assignment, payment negotiation, and escalation are decoupled from institution-specific rules, allowing tenants to configure policies without UI redesign.</p>
+                </div>
+              </div>
+              <div className={styles.constraintCard}>
+                <div className={styles.constraintTitleSection}>
+                  <h3 className={styles.constraintTitle}>Pluggable governance layers</h3>
+                  <p className={styles.constraintDescription}>As regulations evolved or new institutions had unique requirements, the IA could layer new constraints (e.g., enhanced audit for high-risk portfolios) without breaking existing user workflows.</p>
+                </div>
+              </div>
+              <div className={styles.constraintCard}>
+                <div className={styles.constraintTitleSection}>
+                  <h3 className={styles.constraintTitle}>Data boundaries as first-class citizens</h3>
+                  <p className={styles.constraintDescription}>Data isolation was baked into the IA from day one, not bolted on later. This meant scaling to 50 institutions was as safe as launching with 1.</p>
+                </div>
+              </div>
+            </div>
             <div className={styles.figmaEmbedWrapper}>
               {!showFigmaEmbed ? (
                 <div className={styles.figmaOverlay}>
@@ -305,41 +375,108 @@ export default function MunjzCaseStudy() {
             <h2 className={styles.sectionTitle}>Key Decisions I Owned</h2>
             <div className={styles.decisionsList}>
               <div className={styles.decisionSubsection}>
-                <h3 className={styles.decisionSubsectionTitle}>Embedded regulatory rules directly into UI interactions</h3>
-                <div className={styles.imagePlaceholder}>
-                  <div className={styles.placeholderLabel}>Image Placeholder: Regulatory Rules in UI</div>
-                </div>
-                <p className={styles.imageAltText}>Regulatory Rules in UI</p>
+                <h3 className={styles.decisionSubsectionTitle}>Compliance as a Hard Constraint</h3>
+                <p className={styles.decisionSubsectionDescription}>Embedded regulatory rules directly into UI interactions. Contact limits enforced structurally, not by training.</p>
+                <Image
+                  src="/decision-compliance.png"
+                  alt="Regulatory Rules in UI"
+                  width={1920}
+                  height={1080}
+                  className={styles.decisionImage}
+                />
+                <p className={styles.imageAltText}>Contact limits enforced structurally, not by training</p>
               </div>
               <div className={styles.decisionSubsection}>
                 <h3 className={styles.decisionSubsectionTitle}>Designed role-based, tenant-safe views</h3>
-                <div className={styles.imagePlaceholder}>
-                  <div className={styles.placeholderLabel}>Image Placeholder: Role-Based Access</div>
-                </div>
-                <p className={styles.imageAltText}>Role-Based Access</p>
-              </div>
-              <div className={styles.decisionSubsection}>
-                <h3 className={styles.decisionSubsectionTitle}>Introduced confirmation and reasoning for high-risk escalation actions</h3>
-                <div className={styles.imagePlaceholder}>
-                  <div className={styles.placeholderLabel}>Image Placeholder: Intentional Friction</div>
-                </div>
-                <p className={styles.imageAltText}>Intentional Friction</p>
+                <p className={styles.decisionSubsectionDescription}>Each role sees only what they need to act on, with strict data isolation between tenants.</p>
+                <Image
+                  src="/decision-tenant.png"
+                  alt="Role-Based Access"
+                  width={1920}
+                  height={1080}
+                  className={styles.decisionImage}
+                />
+                <p className={styles.imageAltText}>Each role sees only what they need to act on</p>
               </div>
               <div className={styles.decisionSubsection}>
                 <h3 className={styles.decisionSubsectionTitle}>Built RTL/LTR parity as a first-class system constraint</h3>
-                <div className={styles.imagePlaceholder}>
-                  <div className={styles.placeholderLabel}>Image Placeholder: RTL/LTR Parity</div>
-                </div>
-                <p className={styles.imageAltText}>RTL/LTR Parity</p>
-              </div>
-              <div className={styles.decisionSubsection}>
-                <h3 className={styles.decisionSubsectionTitle}>Prioritized governance, auditability, and explainability in MVP scope</h3>
-                <div className={styles.imagePlaceholder}>
-                  <div className={styles.placeholderLabel}>Image Placeholder: MVP Scoping</div>
-                </div>
-                <p className={styles.imageAltText}>MVP Scoping</p>
+                <p className={styles.decisionSubsectionDescription}>Native Arabic/English from MVP, not an afterthought. Structural RTL/LTR mirroring, not just translated copy.</p>
+                <Image
+                  src="/decision-rtl.png"
+                  alt="RTL/LTR Parity"
+                  width={1920}
+                  height={1080}
+                  className={styles.decisionImage}
+                />
+                <p className={styles.imageAltText}>Native Arabic/English from MVP, not an afterthought</p>
               </div>
             </div>
+          </section>
+
+          {/* Trade-Offs */}
+          <section className={styles.contentBlock}>
+            <h2 className={styles.sectionTitle}>Trade-Offs</h2>
+            <div className={styles.tradeOffsGrid}>
+              <div className={styles.tradeOffCard}>
+                <h3 className={styles.tradeOffTitle}>AI-driven prediction</h3>
+                <div className={styles.tradeOffContent}>
+                  <p className={styles.tradeOffIdeal}>
+                    <strong>Ideal:</strong> AI-driven predictive segmentation and automated case routing.
+                  </p>
+                  <p className={styles.tradeOffWhat}>
+                    <strong>What we did in the MVP:</strong> Used transparent rule-based logic that admins can configure per tenant.
+                  </p>
+                  <p className={styles.tradeOffWhy}>
+                    <strong>Why:</strong> We didn&apos;t yet have the historical data or risk appetite for a &quot;black box&quot; model; rules gave immediate value and were easy to explain to regulators and stakeholders.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.tradeOffCard}>
+                <h3 className={styles.tradeOffTitle}>Verification</h3>
+                <div className={styles.tradeOffContent}>
+                  <p className={styles.tradeOffIdeal}>
+                    <strong>Ideal:</strong> Real-time document verification via government and third‑party APIs.
+                  </p>
+                  <p className={styles.tradeOffWhat}>
+                    <strong>What we did in the MVP:</strong> Built a manual verification queue where Super Admins review and approve uploaded documents.
+                  </p>
+                  <p className={styles.tradeOffWhy}>
+                    <strong>Why:</strong> API integrations were high-risk within the 23‑week timeline; a manual flow let us launch safely while keeping a clear path to future automation.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.tradeOffCard}>
+                <h3 className={styles.tradeOffTitle}>Negotiation</h3>
+                <div className={styles.tradeOffContent}>
+                  <p className={styles.tradeOffIdeal}>
+                    <strong>Ideal:</strong> Fully self‑serve customer negotiation with automated approvals and counter‑offers.
+                  </p>
+                  <p className={styles.tradeOffWhat}>
+                    <strong>What we did in the MVP:</strong> Kept payment plan creation and changes agent‑led, with customers reviewing and agreeing via the portal.
+                  </p>
+                  <p className={styles.tradeOffWhy}>
+                    <strong>Why:</strong> Financial risk needed to stay with humans during rollout; this preserved control while still improving transparency for customers.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.tradeOffCard}>
+                <h3 className={styles.tradeOffTitle}>High-risk actions</h3>
+                <div className={styles.tradeOffContent}>
+                  <p className={styles.tradeOffIdeal}>
+                    <strong>Ideal:</strong> Seamless, frictionless workflows for all actions to maximize efficiency and speed.
+                  </p>
+                  <p className={styles.tradeOffWhat}>
+                    <strong>What we did in the MVP:</strong> Introduced confirmation and reasoning requirements for high-risk escalation actions, adding intentional friction.
+                  </p>
+                  <p className={styles.tradeOffWhy}>
+                    <strong>Why:</strong> Intentional friction prevents accidental violations while creating immutable audit trails. This structural approach ensures compliance is built into the workflow, not dependent on training.
+            </p>
+          </div>
+              </div>
+            </div>
+            <blockquote className={styles.highlightQuote}>
+              Each trade-off favored risk reduction and trust over speed.
+            </blockquote>
           </section>
 
           {/* Wireframes */}
@@ -422,58 +559,6 @@ export default function MunjzCaseStudy() {
             </div>
           </section>
 
-          {/* Trade-Offs */}
-          <section className={styles.contentBlock}>
-            <h2 className={styles.sectionTitle}>Trade-Offs</h2>
-            <div className={styles.tradeOffsGrid}>
-              <div className={styles.tradeOffCard}>
-                <h3 className={styles.tradeOffTitle}>AI-driven prediction</h3>
-                <div className={styles.tradeOffContent}>
-                  <p className={styles.tradeOffIdeal}>
-                    <strong>Ideal:</strong> AI-driven predictive segmentation and automated case routing.
-                  </p>
-                  <p className={styles.tradeOffWhat}>
-                    <strong>What we did in the MVP:</strong> Used transparent rule-based logic that admins can configure per tenant.
-                  </p>
-                  <p className={styles.tradeOffWhy}>
-                    <strong>Why:</strong> We didn&apos;t yet have the historical data or risk appetite for a &quot;black box&quot; model; rules gave immediate value and were easy to explain to regulators and stakeholders.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.tradeOffCard}>
-                <h3 className={styles.tradeOffTitle}>Verification</h3>
-                <div className={styles.tradeOffContent}>
-                  <p className={styles.tradeOffIdeal}>
-                    <strong>Ideal:</strong> Real-time document verification via government and third‑party APIs.
-                  </p>
-                  <p className={styles.tradeOffWhat}>
-                    <strong>What we did in the MVP:</strong> Built a manual verification queue where Super Admins review and approve uploaded documents.
-                  </p>
-                  <p className={styles.tradeOffWhy}>
-                    <strong>Why:</strong> API integrations were high-risk within the 23‑week timeline; a manual flow let us launch safely while keeping a clear path to future automation.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.tradeOffCard}>
-                <h3 className={styles.tradeOffTitle}>Negotiation</h3>
-                <div className={styles.tradeOffContent}>
-                  <p className={styles.tradeOffIdeal}>
-                    <strong>Ideal:</strong> Fully self‑serve customer negotiation with automated approvals and counter‑offers.
-                  </p>
-                  <p className={styles.tradeOffWhat}>
-                    <strong>What we did in the MVP:</strong> Kept payment plan creation and changes agent‑led, with customers reviewing and agreeing via the portal.
-                  </p>
-                  <p className={styles.tradeOffWhy}>
-                    <strong>Why:</strong> Financial risk needed to stay with humans during rollout; this preserved control while still improving transparency for customers.
-            </p>
-          </div>
-              </div>
-            </div>
-            <blockquote className={styles.highlightQuote}>
-              Each trade-off favored risk reduction and trust over speed.
-            </blockquote>
-          </section>
-
           {/* Outcome */}
           <section className={styles.contentBlock}>
             <h2 className={styles.sectionTitle}>Outcome</h2>
@@ -508,9 +593,14 @@ export default function MunjzCaseStudy() {
               </p>
             </div>
           </section>
+
+          {/* Other Works */}
+          <OtherWorks currentHref="/munjz" />
         </div>
       </div>
       <Footer />
     </main>
   )
 }
+
+

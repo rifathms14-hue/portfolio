@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import styles from './Projects.module.css'
 import CaseStudyCard from './CaseStudyCard'
 import CurvedLoop from './CurvedLoop'
+import PasswordModal from './PasswordModal'
 
 interface Project {
   id: number
@@ -16,6 +18,7 @@ interface Project {
   hoverText?: string
   tags?: string[]
   href: string
+  isPasswordProtected?: boolean
 }
 
 const projects: Project[] = [
@@ -27,6 +30,7 @@ const projects: Project[] = [
     hoverText: 'Designed a decision-critical notification system for a high-stake Ad-Tech platform, turning notifications into a reliable attention layer through user control, clear context, and accountability.',
     tags: ['AdTech', 'High-Stakes Systems'],
     href: '/voiro',
+    isPasswordProtected: false,
   },
   {
     id: 2,
@@ -36,6 +40,7 @@ const projects: Project[] = [
     hoverText: 'Transformed fragmented, institution-locked collection systems into a governed, multi-tenant decision infrastructure. Designed to scale across agencies while operating under strict regulatory constraints.',
     tags: ['FinTech', 'Multi-Tenant SaaS', 'Compliance'],
     href: '/munjz',
+    isPasswordProtected: false,
   },
   {
     id: 3,
@@ -45,6 +50,7 @@ const projects: Project[] = [
     hoverText: 'Architected a governed decision cockpit for global demand planning, and preserving existing user behavior while eliminating fragmentation, restoring shared confidence, and accelerating cross-org supply chain decisions.',
     tags: ['Supply Chain', 'Enterprise SaaS', 'User Behavior'],
     href: '/ibp',
+    isPasswordProtected: true,
   },
   {
     id: 4,
@@ -54,49 +60,86 @@ const projects: Project[] = [
     hoverText: 'Led the end-to-end transformation of a fragmented design ecosystem into a governed, scalable design system across a distributed organization of 50+ designers.',
     tags: ['Design System', 'DesignOps', 'Governance'],
     href: '/design-system',
+    isPasswordProtected: true,
   },
 ]
 
 export default function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const router = useRouter()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  const handleProjectClick = (e: React.MouseEvent, project: Project) => {
+    if (project.isPasswordProtected) {
+      e.preventDefault()
+      setSelectedProject(project)
+      setIsModalOpen(true)
+    }
+  }
+
+  const handlePasswordSuccess = () => {
+    if (selectedProject) {
+      setIsModalOpen(false)
+      router.push(selectedProject.href)
+    }
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
+  }
 
   return (
-    <section id="projects" className={styles.projects} ref={ref}>
-      <div className="container">
-        <div className={styles.sectionTitle}>
-          <CurvedLoop 
-            marqueeText="Highlighted ✦ Projects ✦ Featured ✦ Works ✦"
-            speed={2}
-            curveAmount={80}
-            direction="left"
-            interactive={true}
-          />
+    <>
+      <section id="projects" className={styles.projects} ref={ref}>
+        <div className="container">
+          <div className={styles.sectionTitle}>
+            <CurvedLoop 
+              marqueeText="Highlighted ✦ Projects ✦ Featured ✦ Works ✦"
+              speed={2}
+              curveAmount={80}
+              direction="left"
+              interactive={true}
+            />
+          </div>
+          
+          <div className={styles.projectsGrid}>
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className={styles.projectCard}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link 
+                  href={project.href} 
+                  style={{ textDecoration: 'none', display: 'block' }}
+                  onClick={(e) => handleProjectClick(e, project)}
+                >
+                  <CaseStudyCard
+                    title={project.title}
+                    imageUrl={project.imageUrl}
+                    imageAlt={project.title}
+                    iconUrl={project.iconUrl}
+                    hoverText={project.hoverText}
+                    tags={project.tags}
+                  />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
-        
-        <div className={styles.projectsGrid}>
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className={styles.projectCard}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Link href={project.href} style={{ textDecoration: 'none', display: 'block' }}>
-                <CaseStudyCard
-                  title={project.title}
-                  imageUrl={project.imageUrl}
-                  imageAlt={project.title}
-                  iconUrl={project.iconUrl}
-                  hoverText={project.hoverText}
-                  tags={project.tags}
-                />
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+
+      <PasswordModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        onSuccess={handlePasswordSuccess}
+        caseStudyTitle={selectedProject?.title || ''}
+      />
+    </>
   )
 }

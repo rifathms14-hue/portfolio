@@ -126,7 +126,7 @@ export default function Header() {
               />
             </motion.a>
             <motion.a
-              href="/resume.pdf"
+              href="https://www.dropbox.com/scl/fi/qvpsgjqwfa54j2kzrbjy5/Mohamed-Rifath-CV-2026.pdf?rlkey=qj7dqygwmwue1jbgn8m1pqs8r&e=1&st=6790yq28&dl=0"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.resumeButton}
